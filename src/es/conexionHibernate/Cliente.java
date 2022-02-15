@@ -65,4 +65,12 @@ public class Cliente {
 		this.direccion = direccion;
 	}
 
+	public DetallesCliente getDetallesCliente() {
+		return detallesCliente;
+	}
+
+	public void setDetallesCliente(DetallesCliente detallesCliente) {
+		this.detallesCliente = detallesCliente;
+	}
+
 }
