@@ -1,5 +1,8 @@
 package es.conexionHibernate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,6 +26,9 @@ public class Cliente {
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id")
 	private DetallesCliente detallesCliente;
+	
+	@OneToMany(mappedBy="cliente", cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	private List<Pedido> pedidos;
 
 	public Cliente() {
 	}
@@ -78,4 +84,12 @@ public class Cliente {
 		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + "]";
 	}
 	
+	public void agregarPedidos(Pedido pedido) {
+		
+		if(pedidos == null) pedidos = new ArrayList<Pedido>();
+		
+		pedidos.add(pedido);
+		
+		pedido.setCliente(this);
+	}
 }
