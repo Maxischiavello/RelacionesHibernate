@@ -1,6 +1,6 @@
 package es.conexionHibernate;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class Pedido {
 	private int id;
 	
 	@Column(name="fecha")
-	private Date fecha;
+	private GregorianCalendar fecha;
 	
 	@Column(name="forma_pago")
 	private String formaPago;
@@ -30,8 +30,11 @@ public class Pedido {
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
+	
+	public Pedido() {
+	}
 
-	public Pedido(Date fecha) {
+	public Pedido(GregorianCalendar fecha) {
 		this.fecha = fecha;
 	}
 

@@ -78,6 +78,14 @@ public class Cliente {
 	public void setDetallesCliente(DetallesCliente detallesCliente) {
 		this.detallesCliente = detallesCliente;
 	}
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	@Override
 	public String toString() {
